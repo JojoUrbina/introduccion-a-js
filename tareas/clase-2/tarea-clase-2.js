@@ -41,4 +41,21 @@
 // console.log(
 //     `El resultado de ${numero1} ${operador} ${numero2} es ${resultado}`
 // );
-
+let primerNumero=2;
+let segundoNumero=4;
+let operador="-"
+function sumar(primerNumero,segundoNumero) {
+    return primerNumero+segundoNumero
+}
+function restar(primerNumero,segundoNumero){
+    return primerNumero-segundoNumero
+}
+let resultado;
+if(operador=="+"){
+    resultado=sumar(primerNumero,segundoNumero)
+}else{
+   resultado= restar(primerNumero,segundoNumero)
+}
+console.log(
+  ` ${primerNumero} ${operador} ${segundoNumero} es ${resultado}`
+ );
