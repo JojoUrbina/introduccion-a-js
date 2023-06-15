@@ -9,6 +9,7 @@
 let $formulario = document.querySelector("form");
 let $botonAgregarInput = document.querySelector("#agregarInput");
 let $botonCalcular = document.querySelector("#calcular");
+let $resultado=document.querySelector("#resultado")
 function crearInput(cantidadClases) {
   for (let i = 0; i < cantidadClases; i++) {
     let $div = document.createElement("div");
@@ -75,5 +76,5 @@ $botonCalcular.onclick = function (e) {
   let totalHoras = horas + Math.floor(minutos / 60);
   let minutosRestantes= minutos%60
   let segundosRestantes= segundos%60
-  console.log(totalHoras+" "+minutosRestantes+" "+segundosRestantes)
+  $resultado.innerText=`El tiempo total de las clases es de ${totalHoras} horas, ${minutosRestantes} minutos y ${segundosRestantes} segundos`
 };
