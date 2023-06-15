@@ -13,32 +13,41 @@ let numeroMenor;
 let numeroMayor;
 let numeroRepetido;
 
-function convertirElementosaA_Arrays() {
-  for (let i = 0; i < $listaDeNumeros.length; i++) {
-    arrayDeNumeros.push(Number($listaDeNumeros[i].innerText));
+function convertirElementosaA_Arrays(listaDeNumeros) {
+  for (let i = 0; i < listaDeNumeros.length; i++) {
+    arrayDeNumeros.push(Number(listaDeNumeros[i].innerText));
   }
+  return arrayDeNumeros
 }
 function calcularPromedioArray(arrayDeNumeros) {
   promedioArrays =
     arrayDeNumeros.reduce((acc, act) => acc + act, 0) / arrayDeNumeros.length;
+    return promedioArrays
 }
-function calcularNumeroMenor() {
+function calcularNumeroMenor(arrayDeNumeros) {
   numeroMenor = arrayDeNumeros[0];
   for (let i = 1; i < arrayDeNumeros.length; i++) {
     if (arrayDeNumeros[i] < numeroMenor) {
       numeroMenor = arrayDeNumeros[i];
     }
   }
+  return numeroMenor
 }
-function calcularNumeroMayor() {
+function calcularNumeroMayor(arrayDeNumeros) {
   numeroMayor = arrayDeNumeros[0];
+  for (let i = 1; i < arrayDeNumeros.length; i++) {
+    if (arrayDeNumeros[i] > numeroMayor) {
+      numeroMayor = arrayDeNumeros[i];
+    }
+  }
+  return numeroMayor
 }
 
-function calcularNumeroMasRepetido() {
+function calcularNumeroMasRepetido(arrayDeNumeros) {
   let contadorMaximo = 0;
   for (let i = 0; i < arrayDeNumeros.length; i++) {
     let contador = 0;
-    for (let j = 0; j < arrayDeNumeros; j++) {
+    for (let j = 0; j < arrayDeNumeros.length; j++) {
       if (arrayDeNumeros[i] == arrayDeNumeros[j]) {
         contador++;
       }
@@ -50,8 +59,14 @@ function calcularNumeroMasRepetido() {
   }
 }
 
-convertirElementosaA_Arrays();
-calcularNumeroMenor();
-calcularNumeroMayor();
+convertirElementosaA_Arrays($listaDeNumeros);
+calcularNumeroMenor(arrayDeNumeros);
+calcularNumeroMayor(arrayDeNumeros);
 calcularPromedioArray(arrayDeNumeros);
+calcularNumeroMasRepetido(arrayDeNumeros)
+
+
+console.log(promedioArrays);
+console.log(numeroMenor);
 console.log(numeroMayor);
+console.log(numeroRepetido);
