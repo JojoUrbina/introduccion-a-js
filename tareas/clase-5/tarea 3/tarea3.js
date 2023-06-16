@@ -65,7 +65,7 @@ $botonAgregarInput.onclick = function (e) {
   let $cantidadClases = document.querySelector("#clases").value;
   eliminarDiv();
   crearInput($cantidadClases);
-  console.log(document.querySelectorAll(".inputHora"));
+
 };
 $botonCalcular.onclick = function (e) {
   e.preventDefault;
