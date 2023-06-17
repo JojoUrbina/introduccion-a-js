@@ -11,7 +11,7 @@ let $botonCalcular = document.querySelector("#calcular");
 let $resultado = document.querySelector("#resultado");
 let $botonEmpezarDeNuevo = document.createElement("button");
 $botonEmpezarDeNuevo.textContent = "Empezar de nuevo";
-$botonEmpezarDeNuevo.type="button"
+$botonEmpezarDeNuevo.type = "button";
 let arrayEdadesFamiliares = [];
 let familiarMenor;
 let familiarMayor;
@@ -32,16 +32,16 @@ function crearInput(cantidadFamiliares) {
     $div.appendChild($inputEdadFamiliar);
     $formulario.appendChild($div);
   }
- 
+
   $formulario.appendChild($botonEmpezarDeNuevo);
 }
 
 function EmpezarDeNuevo(e) {
   $resultado.innerText = "";
-  familiarMenor=0
-  familiarMayor=0
-  promedioEdadFamiliares=0
-  $botonEmpezarDeNuevo.remove()
+  familiarMenor = 0;
+  familiarMayor = 0;
+  promedioEdadFamiliares = 0;
+  $botonEmpezarDeNuevo.remove();
   let divsExistentes = document.querySelectorAll(".divInput");
   for (let i = 0; i < divsExistentes.length; i++) {
     divsExistentes[i].remove();
@@ -80,12 +80,12 @@ function calcularPromedioEdadFamiliares(arrayEdadesFamiliares) {
   return promedioEdadFamiliares;
 }
 
-
-$botonEmpezarDeNuevo.onclick=function (e) {
-  e.preventDefault
-  EmpezarDeNuevo()
-  document.querySelector("#cantidadFamiliares").value=""
-}
+$botonEmpezarDeNuevo.onclick = function (e) {
+  e.preventDefault;
+  EmpezarDeNuevo();
+  document.querySelector("#cantidadFamiliares").value = "";
+  arrayEdadesFamiliares = [];
+};
 
 $botonAgregarFamiliares.onclick = function (e) {
   e.preventDefault;
@@ -96,11 +96,12 @@ $botonAgregarFamiliares.onclick = function (e) {
 
 $botonCalcular.onclick = function (e) {
   e.preventDefault;
+  arrayEdadesFamiliares = [];
   let $edadesFamiliares = document.querySelectorAll(".inputEdadesFamiliares");
-  convertirElementosaA_Arrays($edadesFamiliares); 
-  familiarMayor=calcularFamiliarMayor(arrayEdadesFamiliares)
-  familiarMenor=calcularFamiliarMenor(arrayEdadesFamiliares)
-  promedioEdadFamiliares=calcularPromedioEdadFamiliares(arrayEdadesFamiliares);
+  arrayEdadesFamiliares = convertirElementosaA_Arrays($edadesFamiliares);
+  calcularFamiliarMayor(arrayEdadesFamiliares);
+  calcularFamiliarMenor(arrayEdadesFamiliares);
+  calcularPromedioEdadFamiliares(arrayEdadesFamiliares);
 
   $resultado.innerText = `El familiar con mas edad tiene ${familiarMayor} años, el menor tiene ${familiarMenor} ${
     familiarMenor > 1 ? "años " : "año "
