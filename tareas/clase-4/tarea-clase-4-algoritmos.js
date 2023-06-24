@@ -80,11 +80,52 @@ console.log(sumaImpares)
 
 Desafío de programación #8: Crea una función que convierta de Celsius a Fahrenheit
 
+function celsiusAFahrenheit(celsius) {
+let fahrenheit =(celsius*9/5)+32 
+return fahrenheit
+}
+console.log(celsiusAFahrenheit(10));
+
+
+
+
 Desafío de programación #9: Crea una función que convierta de Fahrenheit a Celsius
 
+
+function fahrenheitACelsius(fahrenheit) {
+  let celsius =(fahrenheit-32)*5/9 
+  return celsius
+  }
+console.log(fahrenheitACelsius(75)); 
+  
 Desafío de programación #10: Calcula la suma de todos los números en un array de números
 
-Desafío de programación #11: Calcula el promedio de todos los números en un array de números. (en una función)
+const array=[1,3,3,20,1]
+let totalArrays=0
+function calcularSumarArrays(array) {
+  for (let i = 0; i < array.length; i++) {
+    totalArrays += array[i];
+  }
+  return totalArrays
+}
+console.log(calcularSumarArrays(array));
+
+
+
+Desafío de programación #11: Calcula el promedio de todos los números en un array de números. (en una función
+  
+
+const array=[1,3,3,20,1]
+function calcularPromedioArrays(array) {
+  let totalArrays=0;
+  for (let i = 0; i < array.length; i++) {
+    totalArrays += array[i];
+  }
+  return totalArrays/array.length
+}
+const promedioArrays=calcularPromedioArrays(array)
+
+
 
 Desafío de programación #12: Crea una función que reciba un array de números y devuelva un array conteniendo solo los números positivos
 
