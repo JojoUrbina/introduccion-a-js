@@ -7,7 +7,6 @@
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 
 let $listaDeNumeros = document.querySelectorAll("li");
-
 function extraerNumeros(listaDeNumeros) {
   let numerosExtraidos = [];
 
