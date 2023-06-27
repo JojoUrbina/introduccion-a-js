@@ -7,66 +7,74 @@
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 
 let $listaDeNumeros = document.querySelectorAll("li");
-let arrayDeNumeros = [];
-let promedioArrays = 0;
-let numeroMenor;
-let numeroMayor;
-let numeroRepetido;
 
-function convertirElementosaA_Arrays(listaDeNumeros) {
+function extraerNumeros(listaDeNumeros) {
+  let numerosExtraidos = [];
+
   for (let i = 0; i < listaDeNumeros.length; i++) {
-    arrayDeNumeros.push(Number(listaDeNumeros[i].innerText));
+    numerosExtraidos.push(Number(listaDeNumeros[i].innerText));
   }
-  return arrayDeNumeros
-}
-function calcularPromedioArray(arrayDeNumeros) {
-  promedioArrays =
-    arrayDeNumeros.reduce((acc, act) => acc + act, 0) / arrayDeNumeros.length;
-    return promedioArrays
-}
-function calcularNumeroMenor(arrayDeNumeros) {
-  numeroMenor = arrayDeNumeros[0];
-  for (let i = 1; i < arrayDeNumeros.length; i++) {
-    if (arrayDeNumeros[i] < numeroMenor) {
-      numeroMenor = arrayDeNumeros[i];
-    }
-  }
-  return numeroMenor
-}
-function calcularNumeroMayor(arrayDeNumeros) {
-  numeroMayor = arrayDeNumeros[0];
-  for (let i = 1; i < arrayDeNumeros.length; i++) {
-    if (arrayDeNumeros[i] > numeroMayor) {
-      numeroMayor = arrayDeNumeros[i];
-    }
-  }
-  return numeroMayor
+
+  return numerosExtraidos;
 }
 
-function calcularNumeroMasRepetido(arrayDeNumeros) {
+function calcularPromedioNumeros(listaDeNumeros) {
+  let totalListaDeNumeros = 0;
+
+  for (let i = 0; i < listaDeNumeros.length; i++) {
+    totalListaDeNumeros += listaDeNumeros[i];
+  }
+  return totalListaDeNumeros / listaDeNumeros.length;
+}
+function calcularNumeroMenor(listaDeNumeros) {
+  let numeroMenorDeLista = listaDeNumeros[0];
+
+  for (let i = 1; i < listaDeNumeros.length; i++) {
+    if (listaDeNumeros[i] < numeroMenorDeLista) {
+      numeroMenorDeLista = listaDeNumeros[i];
+    }
+  }
+  return numeroMenorDeLista;
+}
+function calcularNumeroMayor(listaDeNumeros) {
+  let numeroMayorDeLista = listaDeNumeros[0];
+
+  for (let i = 1; i < listaDeNumeros.length; i++) {
+    if (listaDeNumeros[i] > numeroMayorDeLista) {
+      numeroMayorDeLista = listaDeNumeros[i];
+    }
+  }
+  return numeroMayorDeLista;
+}
+
+function encontrarNumeroMasRepetido(listaDeNumeros) {
   let contadorMaximo = 0;
-  for (let i = 0; i < arrayDeNumeros.length; i++) {
+  let numeroMasRepetido;
+
+  for (let i = 0; i < listaDeNumeros.length; i++) {
     let contador = 0;
-    for (let j = 0; j < arrayDeNumeros.length; j++) {
-      if (arrayDeNumeros[i] == arrayDeNumeros[j]) {
+    for (let j = 0; j < listaDeNumeros.length; j++) {
+      if (listaDeNumeros[i] == listaDeNumeros[j]) {
         contador++;
       }
     }
     if (contador > contadorMaximo) {
       contadorMaximo = contador;
-      numeroRepetido = arrayDeNumeros[i];
+      numeroMasRepetido = listaDeNumeros[i];
     }
   }
+
+  return numeroMasRepetido;
 }
 
-convertirElementosaA_Arrays($listaDeNumeros);
-calcularNumeroMenor(arrayDeNumeros);
-calcularNumeroMayor(arrayDeNumeros);
-calcularPromedioArray(arrayDeNumeros);
-calcularNumeroMasRepetido(arrayDeNumeros)
+let listaDeNumeros = extraerNumeros($listaDeNumeros);
+let promedioNumeros = calcularPromedioNumeros(listaDeNumeros);
+let numeroMenor = calcularNumeroMenor(listaDeNumeros);
+let numeroMayor = calcularNumeroMayor(listaDeNumeros);
+let numeroMasRepetido = encontrarNumeroMasRepetido(listaDeNumeros);
 
-
-console.log(promedioArrays);
+console.log(listaDeNumeros);
+console.log(promedioNumeros);
 console.log(numeroMenor);
 console.log(numeroMayor);
-console.log(numeroRepetido);
+console.log(numeroMasRepetido);
