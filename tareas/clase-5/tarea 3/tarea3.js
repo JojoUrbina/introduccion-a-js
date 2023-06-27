@@ -10,18 +10,18 @@ let $formulario = document.querySelector("form");
 let $botonAgregarInput = document.querySelector("#agregarInput");
 let $botonCalcular = document.querySelector("#calcular");
 let $resultado=document.querySelector("#resultado")
-function crearInput(cantidadClases) {
+function crearVideo(cantidadClases) {
   for (let i = 0; i < cantidadClases; i++) {
     let $div = document.createElement("div");
     $div.className = "divInput";
     let $inputHora = document.createElement("input");
-    $inputHora.className = "inputHora";
+    $inputHora.className = "input-horas";
     $inputHora.placeholder = "ingresar horas";
     let $inputMinutos = document.createElement("input");
-    $inputMinutos.className = "inputMinutos";
+    $inputMinutos.className = "input-minutos";
     $inputMinutos.placeholder = "ingresar minutos";
     let $inputSegundos = document.createElement("input");
-    $inputSegundos.className = "inputSegundos";
+    $inputSegundos.className = "input-segundos";
     $inputSegundos.placeholder = "ingresar segundos";
     $div.appendChild($inputHora);
     $div.appendChild($inputMinutos);
@@ -35,46 +35,33 @@ function eliminarDiv() {
     divsExistentes[i].remove();
   }
 }
-function sumarHoras() {
-  let total = 0;
-  let arrayHoras = document.querySelectorAll(".inputHora");
-  for (let i = 0; i < arrayHoras.length; i++) {
-    total += Number(arrayHoras[i].value);
+
+function sumarTiempo(tiempo) {
+  let tiempoTotal = 0;
+  let arrayTiempo = document.querySelectorAll(`.input-${tiempo}`);
+  for (let i = 0; i < arrayTiempo.length; i++) {
+    tiempoTotal += Number(arrayTiempo[i].value);
   }
-  return total;
-}
-function sumarMinutos() {
-  let total = 0;
-  let arrayMinutos = document.querySelectorAll(".inputMinutos");
-  for (let i = 0; i < arrayMinutos.length; i++) {
-    total += Number(arrayMinutos[i].value);
-  }
-  return total;
-}
-function sumarSegundos() {
-  let total = 0;
-  let arraySegundos = document.querySelectorAll(".inputSegundos");
-  for (let i = 0; i < arraySegundos.length; i++) {
-    total += Number(arraySegundos[i].value);
-  }
-  return total;
+  return tiempoTotal;
 }
 
 $botonAgregarInput.onclick = function (e) {
-  e.preventDefault;
+  
   let $cantidadClases = document.querySelector("#clases").value;
   eliminarDiv();
-  crearInput($cantidadClases);
+  crearVideo($cantidadClases);
+  e.preventDefault();
 
 };
 $botonCalcular.onclick = function (e) {
-  e.preventDefault;
-  let segundos = sumarSegundos();
-  let minutos = sumarMinutos();
-  let horas = sumarHoras();
+  
+  let segundos = sumarTiempo("segundos");
+  let minutos = sumarTiempo("minutos");
+  let horas = sumarTiempo("horas");
   minutos += Math.floor(segundos / 60);
   let totalHoras = horas + Math.floor(minutos / 60);
   let minutosRestantes= minutos%60
   let segundosRestantes= segundos%60
   $resultado.innerText=`El tiempo total de las clases es de ${totalHoras} horas, ${minutosRestantes} minutos y ${segundosRestantes} segundos`
+  e.preventDefault();
 };
