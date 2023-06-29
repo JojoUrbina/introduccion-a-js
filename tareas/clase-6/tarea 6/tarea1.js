@@ -8,6 +8,8 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 let $formulario = document.querySelector("form");
 let $botonAgregarFamiliares = document.querySelector("#agregar-familiares");
 let $botonCalcular = document.querySelector("#calcular");
+let $botonEmpezarDeNuevo = document.querySelector("#empezar-de-nuevo");
+
 $botonAgregarFamiliares.onclick = function (e) {
   let cantidadFamiliares = document.querySelector("#cantidad-familiares").value;
 
@@ -36,6 +38,7 @@ function crearFamiliares(cantidadFamiliares) {
   }
 }
 function EmpezarDeNuevo() {
+  document.querySelector("#cantidad-familiares").value = "";
   document.querySelector("#resultado").innerText = "";
   let divsExistentes = document.querySelectorAll(".div-familiar");
   for (let i = 0; i < divsExistentes.length; i++) {
@@ -89,16 +92,18 @@ $botonCalcular.onclick = function (e) {
   console.log(familiarMenor);
   console.log(promedioEdadFamilia);
 
-  let $resultado = document.querySelector("#resultado");
-  $resultado.innerText = `El familiar con mas edad tiene ${familiarMayor} años, el menor tiene ${familiarMenor} ${
-    familiarMenor > 1 ? "años " : "año "
-  }y  el promedio de edad en la familia es de ${promedioEdadFamilia} años`;
+  let $divResultado = document.querySelector("#resultado");
+
+  let resultado = `El familiar con mas edad tiene ${familiarMayor} años,
+   el menor tiene ${familiarMenor} ${familiarMenor > 1 ? "años " : "año "}
+   y  el promedio de edad en la familia es de ${promedioEdadFamilia} años`;
+
+  $divResultado.innerText = resultado;
+
   e.preventDefault();
 };
 
- $botonEmpezarDeNuevo.onclick = function (e) {
-   e.preventDefault;
-   EmpezarDeNuevo();
-   document.querySelector("#cantidadFamiliares").value = "";
-   arrayEdadesFamiliares = [];
- };
+$botonEmpezarDeNuevo.onclick = function (e) {
+  EmpezarDeNuevo();
+  e.preventDefault();
+};
