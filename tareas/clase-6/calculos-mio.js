@@ -28,3 +28,12 @@ function obtenerPromedio(numeros) {
 
   return (acumulador / numeros.length).toFixed(2);
 }
+function extraerNumeros(listaDeNumeros) {
+  let numerosExtraidos=[]
+  for (let i = 0; i < listaDeNumeros.length; i++) {
+      if (listaDeNumeros[i].value) {
+          numerosExtraidos.push(Number(listaDeNumeros[i].value));
+      }
+  }
+  return numerosExtraidos
+}
