@@ -46,35 +46,35 @@ function EmpezarDeNuevo() {
   }
 }
 
-function extraerEdades() {
+function extraerNumeros() {
   let $edadesFamiliares = document.querySelectorAll(".edad-familiar");
-  let edadesExtraidas = [];
+  let numerosExtraidos = [];
   for (let i = 0; i < $edadesFamiliares.length; i++) {
-    edadesExtraidas.push(Number($edadesFamiliares[i].value));
+    numerosExtraidos.push(Number($edadesFamiliares[i].value));
   }
-  return edadesExtraidas;
+  return numerosExtraidos;
 }
 
-function calcularFamiliarMenor(edadesFamiliares) {
-  let familiarMenor = edadesFamiliares[0];
+function extraerNumeroMenor(edadesFamiliares) {
+  let numeroMenor = edadesFamiliares[0];
   for (let i = 1; i < edadesFamiliares.length; i++) {
-    if (edadesFamiliares[i] < familiarMenor) {
-      familiarMenor = edadesFamiliares[i];
+    if (edadesFamiliares[i] < numeroMenor) {
+      numeroMenor = edadesFamiliares[i];
     }
   }
-  return familiarMenor;
+  return numeroMenor;
 }
 
-function calcularFamiliarMayor(edadesFamiliares) {
-  let familiarMayor = edadesFamiliares[0];
+function extraerNumeroMayor(edadesFamiliares) {
+  let numeroMayor = edadesFamiliares[0];
   for (let i = 1; i < edadesFamiliares.length; i++) {
-    if (edadesFamiliares[i] > familiarMayor) {
-      familiarMayor = edadesFamiliares[i];
+    if (edadesFamiliares[i] > numeroMayor) {
+      numeroMayor = edadesFamiliares[i];
     }
   }
-  return familiarMayor;
+  return numeroMayor;
 }
-function calcularPromedioEdadFamiliares(edadesFamiliares) {
+function calcularPromedio(edadesFamiliares) {
   let total = 0;
   for (let i = 0; i < edadesFamiliares.length; i++) {
     total += edadesFamiliares[i];
@@ -83,11 +83,11 @@ function calcularPromedioEdadFamiliares(edadesFamiliares) {
 }
 
 $botonCalcular.onclick = function (e) {
-  let edadesFamiliares = extraerEdades();
+  let edadesFamiliares = extraerNumeros();
 
-  let familiarMayor = calcularFamiliarMayor(edadesFamiliares);
-  let familiarMenor = calcularFamiliarMenor(edadesFamiliares);
-  let promedioEdadFamilia = calcularPromedioEdadFamiliares(edadesFamiliares);
+  let familiarMayor = extraerNumeroMayor(edadesFamiliares);
+  let familiarMenor = extraerNumeroMenor(edadesFamiliares);
+  let promedioEdadFamilia = calcularPromedio(edadesFamiliares).toFixed(2);
   console.log(familiarMayor);
   console.log(familiarMenor);
   console.log(promedioEdadFamilia);
