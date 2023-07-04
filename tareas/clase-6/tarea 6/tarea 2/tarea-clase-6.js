@@ -14,14 +14,12 @@ Al hacer click en "calcular", mostrar en un elemento pre-existente el mayor sala
 Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como 0).
 */
 
-const $form = document.querySelector("#formulario");
 const $btnAgregar = document.querySelector("#agregar");
 const $btnQuitar = document.querySelector("#quitar");
 const $btnCalcular = document.querySelector("#calcular");
 
 $btnAgregar.onclick = function (e) {
-  //let cantidadFamiliares=document.querySelectorAll("label").length
-
+  const $divInputs = document.querySelector("#inputs");
   const $divSalarios = document.createElement("div");
 
   const $labelSalario = document.createElement("label");
@@ -33,13 +31,13 @@ $btnAgregar.onclick = function (e) {
 
   $divSalarios.appendChild($labelSalario);
   $divSalarios.appendChild($inputSalario);
-  $form.append($divSalarios);
+  $divInputs.append($divSalarios);
 };
 
 function extraerNumeros(listaDeNumeros) {
   let numerosExtraidos = [];
   for (let i = 0; i < listaDeNumeros.length; i++) {
-    if (listaDeNumeros[i].value>0) {
+    if (listaDeNumeros[i].value > 0) {
       numerosExtraidos.push(Number(listaDeNumeros[i].value));
     }
   }
@@ -56,17 +54,20 @@ $btnCalcular.onclick = function (e) {
   mostrarSalario(extraerNumeroMenor(salarios), "menor");
   mostrarSalario(calcularPromedio(salarios), "promedio-anual");
   mostrarSalario(salarioPromedioMensual, "promedio-mensual");
-  
-  mostrarResultado();
 
+  mostrarResultado();
+};
+
+$btnQuitar.onclick = function (e) {
+  const $divSalario = document.querySelectorAll("#inputs div")[0];
+  $divSalario && $divSalario.remove();
+  ocultarResultado();
 };
 
 function mostrarSalario(salario, salarioString) {
   let $salario = document.querySelector(`#salario-${salarioString}`);
   $salario.innerText = salario;
 }
-
-
 
 function mostrarResultado() {
   let $resultado = document.querySelector("#resultado");

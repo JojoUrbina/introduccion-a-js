@@ -88,10 +88,6 @@ $botonCalcular.onclick = function (e) {
   let familiarMayor = extraerNumeroMayor(edadesFamiliares);
   let familiarMenor = extraerNumeroMenor(edadesFamiliares);
   let promedioEdadFamilia = calcularPromedio(edadesFamiliares).toFixed(2);
-  console.log(familiarMayor);
-  console.log(familiarMenor);
-  console.log(promedioEdadFamilia);
-
   let $divResultado = document.querySelector("#resultado");
 
   let resultado = `El familiar con mas edad tiene ${familiarMayor} años,
