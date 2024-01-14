@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
+    <title>tarea 1 clase 6</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #453939;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            color: #555555;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-color: #dddddd;
+        }
+
+        .btn-primary {
+            background-color: #4285F4;
+            border-color: #4285F4;
+        }
+
+        .btn-primary:hover {
+            background-color: #357ae8;
+            border-color: #357ae8;
+        }
+
+        .btn-success {
+            background-color: #34A853;
+            border-color: #34A853;
+        }
+
+        .btn-success:hover {
+            background-color: #2c8a44;
+            border-color: #2c8a44;
+        }
+
+        .btn-danger {
+            background-color: #ea4335;
+            border-color: #ea4335;
+        }
+
+        .btn-danger:hover {
+            background-color: #d62c1a;
+            border-color: #d62c1a;
+        }
+
+        /* Nuevos estilos para los familiares */
+        .div-familiar {
+            margin-bottom: 10px;
+        }
+
+        .div-familiar label {
+            color: #777777;
+        }
+
+        .div-familiar input {
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            padding: 5px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1 class="text-center">App Edades Familiares</h1>
+
+        <div class="d-flex justify-content-center ">
+            <form class="rounded border p-3 w-100 mx-auto">
+                <div class="form-group row">
+                    <label class="col-form-label col-sm-4" for="cantidad-familares">Cuantos familiares tienes:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" for="cantidad-familares" id="cantidad-familiares" type="number"
+                            placeholder="1, 2, 3..">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-2" id="agregar-familiares">Agregar familiares</button>
+                    <button class="btn btn-success ml-2" id="calcular">Calcular</button>
+                </div>
+                <div id="familiares"></div>
+                <div class="text-center">
+                    <button type="reset" class="btn btn-danger mt-3" id="empezar-de-nuevo">empezar de nuevo</button>
+                </div>
+            </form>
+        </div>
+        <p class="text-center mt-3"><strong id="resultado"></strong></p>
+    </div>
+
+    <script type="text/javascript" src="tarea1.js"></script>
+</body>
+
+</html>

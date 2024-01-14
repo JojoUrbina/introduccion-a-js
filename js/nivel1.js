@@ -37,6 +37,8 @@
         Esta línea de código va a mostrar 'Hola Mundo!' en la consola del navegador,
         una vez que  se recargue index.html.
 */
+console.log("hola mundo")
+alert("hola mundo")
 
 // Tarea: Ahora te toca a vos! Acá abajo escribí una alerta que diga "Hola mundo!"
 
